@@ -14,10 +14,6 @@ def populate_defaults(config):
     assert config.dataset is not None, 'dataset must be specified'
     assert config.algorithm is not None, 'algorithm must be specified'
 
-    # Run oracle using ERM with unlabeled split
-    if config.use_unlabeled_y:
-        raise ValueError("use_unlabeled_y is not currently supported.")
-
     # Validations
     if config.groupby_fields == ['from_source_domain']:
         if config.n_groups_per_batch is None:

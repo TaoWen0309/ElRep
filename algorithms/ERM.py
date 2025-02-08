@@ -16,12 +16,10 @@ class ERM(SingleModelAlgorithm):
             n_train_steps=n_train_steps,
         )
         self.config = config
-        self.use_unlabeled_y = config.use_unlabeled_y # Expect x,y,m from unlabeled loaders and train on the unlabeled y
 
     def process_batch(self, batch, unlabeled_batch=None):
         """
         Overrides single_model_algorithm.process_batch().
-        ERM defines its own process_batch to handle if self.use_unlabeled_y is true.
         Args:
             - batch (tuple of Tensors): a batch of data yielded by data loaders
             - unlabeled_batch (tuple of Tensors or None): a batch of data yielded by unlabeled data loader
@@ -51,29 +49,12 @@ class ERM(SingleModelAlgorithm):
             'metadata': metadata,
         }
         if unlabeled_batch is not None:
-            if self.use_unlabeled_y: # expect loaders to return x,y,m
-                x, y, metadata = unlabeled_batch
-                y = move_to(y, self.device)
-            else:
-                x, metadata = unlabeled_batch    
+            x, metadata = unlabeled_batch    
             x = move_to(x, self.device)
             results['unlabeled_metadata'] = metadata
-            if self.use_unlabeled_y:
-                results['unlabeled_y_pred'] = self.get_model_output(x, y)
-                results['unlabeled_y_true'] = y
             results['unlabeled_g'] = self.grouper.metadata_to_group(metadata).to(self.device)
         return results
 
     def objective(self, results):
         labeled_loss = self.loss.compute(results['y_pred'], results['y_true'], return_dict=False)
-        if self.use_unlabeled_y and 'unlabeled_y_true' in results:
-            unlabeled_loss = self.loss.compute(
-                results['unlabeled_y_pred'], 
-                results['unlabeled_y_true'], 
-                return_dict=False
-            )
-            lab_size = len(results['y_pred'])
-            unl_size = len(results['unlabeled_y_pred'])
-            return (lab_size * labeled_loss + unl_size * unlabeled_loss) / (lab_size + unl_size)
-        else:
-            return labeled_loss
+        return labeled_loss

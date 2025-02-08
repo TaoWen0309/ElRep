@@ -37,8 +37,6 @@ parser.add_argument('--version', default=None, type=str, help='WILDS labeled dat
 # Unlabeled Dataset
 parser.add_argument('--unlabeled_split', default=None, type=str, choices=wilds.unlabeled_splits,  help='Unlabeled split to use. Some datasets only have some splits available.')
 parser.add_argument('--unlabeled_version', default=None, type=str, help='WILDS unlabeled dataset version number.')
-parser.add_argument('--use_unlabeled_y', default=False, type=parse_bool, const=True, nargs='?', 
-                    help='If true, unlabeled loaders will also the true labels for the unlabeled data. This is only available for some datasets. Used for "fully-labeled ERM experiments" in the paper. Correct functionality relies on CrossEntropyLoss using ignore_index=-100.')
 
 # Loaders
 parser.add_argument('--loader_kwargs', nargs='*', action=ParseKwargs, default={})
