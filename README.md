@@ -9,9 +9,9 @@ The code for Elastic Representation: Mitigating Spurious Correlations for Group 
 
 [Transformers](https://huggingface.co/docs/transformers/en/installation)
 
-## Example commands for ERM with Elastic Representation (ERM+ElRep)
+## Example commands
 
-Note **theta1** and **theta2** stand for the weights of NN and FN, respectively.
+Note **theta1** and **theta2** stand for the weights of NN and FN, respectively. The commands below are for ERM + ElRep. You can replace ERM with the algorithm of your choice.
 
 ### Waterbirds
 
