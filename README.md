@@ -1,8 +1,18 @@
-# Code for Elastic Representation: Mitigating Spurious Correlations for Group Robustness
+# Elastic Representation: Mitigating Spurious Correlations for Group Robustness
+
+This is the official implementation of the [paper]() "Elastic Representation: Mitigating Spurious Correlations for Group Robustness" published at AISTATS 2025.
+
+Authors: Tao Wen, Zihan Wang, Quan Zhang, and Qi Lei
+
+## Abstract
+
+Deep learning models can suffer from severe performance degradation when relying on spurious correlations between input features and labels, making the models perform well on training data but have poor prediction accuracy for minority groups. This problem arises especially when training data are limited or imbalanced. While most prior work focuses on learning invariant features (with consistent correlations to y), it overlooks the potential harm of spurious correlations between features. We hereby propose Elastic Representation (ElRep) to learn features by imposing Nuclear- and Frobenius-norm penalties on the representation from the last layer of a neural network. Similar to the elastic net, ElRep enjoys the benefits of learning important features without losing feature diversity.
 
 ## Prerequisite
 
-This implementation is heavily based on [PDE](https://github.com/uclaml/PDE). Our modification is mainly adding the regularization in the training process:
+This implementation is based on [PDE](https://github.com/uclaml/PDE) and [Wilds](https://github.com/p-lambda/wilds). We thank the authors for their great work. 
+
+Our modification is mainly adding the regularization in the objective function:
 
 ```
 _, s, _ = torch.linalg.svd(features)
@@ -41,3 +51,6 @@ python run_expt.py --dataset civilcomments --algorithm ERM --seed 0 --theta1 0.0
 
 ## Citation
 Please consider citing our work if you find it useful:
+```
+
+```
