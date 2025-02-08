@@ -3,11 +3,7 @@ The code for Elastic Representation: Mitigating Spurious Correlations for Group 
 
 ## Prerequisite
 
-[torch torchvision torchaudio](https://pytorch.org/get-started/locally/)
-
-and other related packages including:
-
-torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric
+[torch torchvision torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric](https://pytorch.org/get-started/locally/)
 
 [Wilds](https://github.com/p-lambda/wilds)
 
