@@ -52,5 +52,13 @@ python run_expt.py --dataset civilcomments --algorithm ERM --seed 0 --theta1 0.0
 ## Citation
 Please consider citing our work if you find it useful:
 ```
-
+@misc{wen2025elasticrepresentationmitigatingspurious,
+      title={Elastic Representation: Mitigating Spurious Correlations for Group Robustness}, 
+      author={Tao Wen and Zihan Wang and Quan Zhang and Qi Lei},
+      year={2025},
+      eprint={2502.09850},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2502.09850}, 
+}
 ```
