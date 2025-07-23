@@ -52,13 +52,19 @@ python run_expt.py --dataset civilcomments --algorithm ERM --seed 0 --theta1 0.0
 ## Citation
 Please consider citing our work if you find it useful:
 ```
-@misc{wen2025elasticrepresentationmitigatingspurious,
-      title={Elastic Representation: Mitigating Spurious Correlations for Group Robustness}, 
-      author={Tao Wen and Zihan Wang and Quan Zhang and Qi Lei},
-      year={2025},
-      eprint={2502.09850},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2502.09850}, 
+@InProceedings{pmlr-v258-wen25a,
+  title = 	 {Elastic Representation: Mitigating Spurious Correlations for Group Robustness},
+  author =       {Wen, Tao and Wang, Zihan and Zhang, Quan and Lei, Qi},
+  booktitle = 	 {Proceedings of The 28th International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {541--549},
+  year = 	 {2025},
+  editor = 	 {Li, Yingzhen and Mandt, Stephan and Agrawal, Shipra and Khan, Emtiyaz},
+  volume = 	 {258},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {03--05 May},
+  publisher =    {PMLR},
+  pdf = 	 {https://raw.githubusercontent.com/mlresearch/v258/main/assets/wen25a/wen25a.pdf},
+  url = 	 {https://proceedings.mlr.press/v258/wen25a.html},
+  abstract = 	 {Deep learning models can suffer from severe performance degradation when relying on spurious correlations between input features and labels, making the models perform well on training data but have poor prediction accuracy for minority groups. This problem arises especially when training data are limited or imbalanced. While most prior work focuses on learning invariant features (with consistent correlations to y), it overlooks the potential harm of spurious correlations between features. We hereby propose Elastic Representation (ElRep) to learn features by imposing Nuclear- and Frobenius-norm penalties on the representation from the last layer of a neural network. Similar to the elastic net, ElRep enjoys the benefits of learning important features without losing feature diversity. The proposed method is simple yet effective. It can be integrated into many deep learning approaches to mitigate spurious correlations and improve group robustness. Moreover, we theoretically show that ElRep has minimum negative impacts on in-distribution predictions. This is a remarkable advantage over approaches that prioritize minority groups at the cost of overall performance.}
 }
 ```
